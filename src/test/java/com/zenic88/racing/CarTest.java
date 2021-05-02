@@ -18,6 +18,15 @@ public class CarTest {
 	}
 
 	@Test
+	@DisplayName("자동차 움직임 가능 여부 테스트")
+	void isCanMoveTest() {
+		assertThat(car.isCanMove(4)).isTrue();
+		assertThat(car.isCanMove(10)).isFalse();
+		assertThat(car.isCanMove(0)).isFalse();
+		assertThat(car.isCanMove(3)).isFalse();
+	}
+
+	@Test
 	@DisplayName("한 칸 이동 테스트")
 	void moveCarTest() {
 		car.move();
