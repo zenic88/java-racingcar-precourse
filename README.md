@@ -5,3 +5,12 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+---
+
+기능 구현
+
+- 자동차 객체 생성
+- 자동차 움직이는 로직
+- 자동차들 일급컬렉션 생성
+- 모든 원시값과 문자열 포장
