@@ -4,23 +4,24 @@ public class Car {
 	private final static int MOVE_MIN = 4;
 	private final static int MOVE_MAX = 9;
 
-	private final String name;
-	private int position;
+	private final CarName name;
+	private final Position position;
 
 	public Car(String carName) {
-		this.name = carName;
+		this.name = new CarName(carName);
+		this.position = new Position();
 	}
 
 	public String getName() {
-		return this.name;
+		return name.getName();
 	}
 
 	public void move() {
-		this.position++;
+		position.move();
 	}
 
 	public int getPosition() {
-		return this.position;
+		return position.getPosition();
 	}
 
 	public boolean isCanMove(int number) {
