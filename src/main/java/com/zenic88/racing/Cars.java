@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Cars {
 	private final static int MIN_CAR = 2;
+
 	public final List<Car> cars = new ArrayList<>();
 
 	public Cars(String carNames) {
@@ -14,14 +15,34 @@ public class Cars {
 		}
 	}
 
+	public String getWinner() {
+		int maxPosition = getMaxPosition();
+		List<String> winnerList = new ArrayList<>();
+		for (Car car : cars) {
+			getWinnerName(car, maxPosition, winnerList);
+		}
+		return String.join(",", winnerList);
+	}
+
+	public void printPosition() {
+		for (Car car : cars) {
+			car.printPosition();
+		}
+		System.out.println();
+	}
+
 	public void move() {
 		for (Car car : cars) {
 			randomMove(car);
 		}
 	}
 
+	public int getSize() {
+		return cars.size();
+	}
+
 	private void randomMove(Car car) {
-		int randomNumber = (int) (Math.random() * 10);
+		int randomNumber = (int)(Math.random() * 10);
 		if (car.isCanMove(randomNumber)) {
 			car.move();
 		}
@@ -33,8 +54,22 @@ public class Cars {
 		}
 	}
 
-	public int getSize() {
-		return cars.size();
+	private void getWinnerName(Car car, int maxPosition, List<String> winnerList) {
+		if (car.getPosition() == maxPosition) {
+			winnerList.add(car.getName());
+		}
+	}
+
+	private int getMaxPosition() {
+		int maxPosition = 0;
+		for (Car car : cars) {
+			maxPosition = comparePosition(car, maxPosition);
+		}
+		return maxPosition;
+	}
+
+	private int comparePosition(Car car, int maxPosition) {
+		return Math.max(car.getPosition(), maxPosition);
 	}
 
 }

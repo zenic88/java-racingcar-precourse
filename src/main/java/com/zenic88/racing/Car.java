@@ -27,4 +27,8 @@ public class Car {
 	public boolean isCanMove(int number) {
 		return number >= MOVE_MIN && number <= MOVE_MAX;
 	}
+
+	public void printPosition() {
+		System.out.println(this.name.getName() + " : " + position.print());
+	}
 }
