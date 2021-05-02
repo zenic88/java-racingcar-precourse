@@ -14,6 +14,19 @@ public class Cars {
 		}
 	}
 
+	public void move() {
+		for (Car car : cars) {
+			randomMove(car);
+		}
+	}
+
+	private void randomMove(Car car) {
+		int randomNumber = (int) (Math.random() * 10);
+		if (car.isCanMove(randomNumber)) {
+			car.move();
+		}
+	}
+
 	private void validation(String carNames) {
 		if (carNames.split(",").length < MIN_CAR) {
 			throw new IllegalArgumentException("레이싱을 할 차량이 2대 이상 필요합니다.");
