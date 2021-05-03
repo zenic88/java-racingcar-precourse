@@ -10,25 +10,16 @@ public class Game {
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
 		System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-		String names = bufferedReader.readLine();
-		Cars cars = new Cars(names);
+		Cars cars = new Cars(bufferedReader.readLine());
 
 		System.out.println("시도할 회수는 몇회인가요?");
-		String inputCount = bufferedReader.readLine();
-		randomMove(cars, inputCount);
+		randomMove(cars, new Count(bufferedReader.readLine()));
 
 		System.out.println(cars.getWinner() + "가 최종 우승했습니다.");
 	}
 
-	private void randomMove(Cars cars, String inputCount) {
-		int count;
-		try {
-			count = Integer.parseInt(inputCount);
-		} catch (NumberFormatException e) {
-			throw new NumberFormatException("숫자만 입력 가능합니다. 입력값 : {" + inputCount + "}");
-		}
-
-		for (int i = 0; i < count; i++) {
+	private void randomMove(Cars cars, Count count) {
+		for (int i = 0; i < count.getCount(); i++) {
 			cars.move();
 			cars.printPosition();
 		}
